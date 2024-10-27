@@ -1,4 +1,4 @@
-export const generarUsuarioAleatorio = (longitudMaxima: number = 10): string => {
+export const generateRandomUser = (longitudMaxima: number = 10): string => {
     const adjetivos = [
         'Valiente', 'Listo', 'Brillante', 'Poderoso', 'Rápido', 'Curioso', 'Gentil', 'Feroz',
         'Noble', 'Feliz', 'Atrevido', 'Veloz', 'Salvaje', 'Calmado', 'Leal', 'Juguetón', 'Intrépido',

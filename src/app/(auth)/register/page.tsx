@@ -44,7 +44,9 @@ export default function Register() {
                 router.push("/login");
             }
         } catch (err) {
-            const dd =  err as Error
+            if(err instanceof Error) {
+                console.log("s")
+            }
             toast({
                 title : "Register Failed",
             })

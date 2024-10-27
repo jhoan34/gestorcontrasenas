@@ -48,8 +48,10 @@ export const FormProfile = (props: FormProfileProps) => {
         router.refresh()
         setShowPhoto(false)
         serPhothoUploaded(false)
-    } catch (error) {
-        const ddd = error as Error;
+    } catch (err) {
+        if(err instanceof Error) {
+          console.log("s")
+        }
         toast({
             title: "algo paso al enviar el formulario",
             variant: "destructive"

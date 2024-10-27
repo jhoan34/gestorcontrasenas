@@ -66,7 +66,10 @@ export function FormAddElement( props: FormAddelementesTypes) {
         })
         router.refresh()
         closeDialogAndDropDown()
-    } catch (error) {
+    } catch (err) {
+        if(err instanceof Error) {
+            console.log("s")
+        }
         toast({
             title: "something went wrong",
             variant: "destructive",

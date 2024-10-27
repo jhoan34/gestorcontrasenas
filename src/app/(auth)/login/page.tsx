@@ -45,7 +45,9 @@ export default function Login() {
             });
             router.push("/");
         } catch (err) {
-            const dd =  err as Error
+            if(err instanceof Error) {
+                console.log("s")
+            }
             toast({
                 title: "Login Failed",
             })

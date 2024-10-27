@@ -18,7 +18,7 @@ export const ourFileRouter = {
   })
     // Middleware que se ejecuta antes de la subida
     .middleware(async ({ req }) => {
-      // Autenticar al usuario
+      console.log(req);
       const user = await auth();
 
       // Si no hay usuario autenticado, lanzar un error
