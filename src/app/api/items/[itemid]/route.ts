@@ -14,7 +14,7 @@ export async function PATCH(
     }
 
     // Rename userId to _userId to avoid the unused variable warning
-    const { userId: _userId, ...updateValues } = values;
+    const { ...updateValues } = values;
 
     const element = await db.element.update({
       where: {
