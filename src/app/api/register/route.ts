@@ -5,8 +5,9 @@ import { hash } from "bcrypt"; // Import the hash function
 
 export async function POST(req: Request) {
     try {
-        console.log(req);
+
         const { email, password, username } = await req.json();
+        console.log( email, password, username)
 
         // Validate input
         if (!email || !password  || !username) {
@@ -29,8 +30,8 @@ export async function POST(req: Request) {
             return new NextResponse("El nombre de usuario ya se encuentra en uso", { status: 409 });
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
+
+        if (!email.includes("@") || !email.includes(".")) {
             return new NextResponse("Email inválido", { status: 400 });
         }
 

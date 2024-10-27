@@ -1,5 +1,5 @@
 "use client";
-import { z } from "zod";
+import { promise, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 
@@ -34,24 +34,25 @@ export default function Register() {
 
     const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
         try {
-            const data = await axios.post("/api/register", values);
-            if(data.status === 200 || data.status === 201){
+            const response = await axios.post("/api/register", values);
+            if (response.status === 200 || response.status === 201) {
                 form.reset({
                     email: "",
                     password: "",
                     username: "",
                 });
                 router.push("/login");
+            } else {
+                console.log("Unexpected status code:", response.status);
             }
         } catch (err) {
-            if(err instanceof Error) {
-                console.log("s")
-            }
+            const errorMessage = axios.isAxiosError(err) && err.response?.data ? err.response.data : "An unexpected error occurred";
             toast({
-                title : "Register Failed",
-            })
+                title: errorMessage,
+            });
         }
     };
+    
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-500 to-blue-800">
