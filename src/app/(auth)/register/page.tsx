@@ -43,9 +43,10 @@ export default function Register() {
                 });
                 router.push("/login");
             }
-        } catch (error : Error | any) {
+        } catch (err) {
+            const dd =  err as Error
             toast({
-                title : error.response.data
+                title : "Register Failed",
             })
         }
     };

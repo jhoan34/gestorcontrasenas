@@ -10,8 +10,6 @@ import Link from "next/link"
 import { SingleItem } from "../SingleItem"
 import { dataSideBarElements, dataSidebarConfiguration } from "./SidebarRoutes.data"
 import { Logout } from "../logout/logout"
-import { redirect } from "next/navigation"
-  
 export function SideBarRoutes () {
 
     return (

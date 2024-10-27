@@ -49,6 +49,7 @@ export const FormProfile = (props: FormProfileProps) => {
         setShowPhoto(false)
         serPhothoUploaded(false)
     } catch (error) {
+        const ddd = error as Error;
         toast({
             title: "algo paso al enviar el formulario",
             variant: "destructive"

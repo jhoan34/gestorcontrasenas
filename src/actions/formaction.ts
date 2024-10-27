@@ -1,11 +1,10 @@
 "use server"
 
 import { signIn } from "../../auth"
-const registerUserFormAction = async (data: any ) => {
-    console.log(data)
+const registerUserFormAction = async ({email, password} : {email:string, password: string}  ) => {
     await signIn("credentials", {
-        email: data.email,
-        password: data.password,
+        email: email,
+        password: password,
         callbackUrl: "/",
     })
 }

@@ -2,7 +2,6 @@ import { DataTableItems } from "@/components/Shared/datatableitems/datatableitem
 import { auth } from "../../../../auth";
 import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
-import { use } from "react";
 
 export default async function Favorites() {
     const session = await auth()

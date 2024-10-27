@@ -5,7 +5,7 @@ import { UploadThingError } from "uploadthing/server";
 const f = createUploadthing();
 
 // Función de autenticación de ejemplo (simulada)
-const auth = async (req: Request) => {
+const auth = async () => {
   // En una aplicación real, deberías implementar tu lógica de autenticación aquí
   return { id: "fakeId" }; // Devuelve un objeto de usuario simulado
 };
@@ -19,7 +19,7 @@ export const ourFileRouter = {
     // Middleware que se ejecuta antes de la subida
     .middleware(async ({ req }) => {
       // Autenticar al usuario
-      const user = await auth(req);
+      const user = await auth();
 
       // Si no hay usuario autenticado, lanzar un error
       if (!user) throw new UploadThingError("Unauthorized");

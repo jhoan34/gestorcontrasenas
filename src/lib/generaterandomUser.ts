@@ -1,46 +1,30 @@
-
-
-export const generateRandomUser = (length = 5) => {
-    const adjectives = [
-        'Brave', 'Clever', 'Bright', 'Mighty', 'Quick', 'Curious', 'Gentle', 'Fierce',
-        'Noble', 'Happy', 'Bold', 'Swift', 'Wild', 'Calm', 'Loyal', 'Playful', 'Fearless',
-        'Quiet', 'Friendly', 'Lucky', 'Graceful', 'Witty', 'Daring', 'Sharp', 'Wise',
-        'Charming', 'Energetic', 'Proud', 'Epic', 'Serene', 'Joyful', 'Vivid', 'Cheerful',
-        'Vigilant', 'Patient', 'Brilliant', 'Mystic', 'Radiant', 'Steady', 'Zesty',
-        'Ambitious', 'Dazzling', 'Bold', 'Vibrant', 'Sassy', 'Intrepid', 'Adventurous',
-        'Cunning', 'Crafty', 'Dynamic', 'Heroic', 'Lively', 'Sparkling', 'Innovative',
-        'Elegant', 'Fearless', 'Magnetic', 'Stellar', 'Resilient', 'Humble', 'Gallant',
-        'Artful', 'Diligent', 'Funky', 'Majestic', 'Valiant', 'Savvy', 'Jolly', 'Radiant',
-        'Nimble', 'Spirited', 'Tough', 'Epic', 'Vivid', 'Optimistic', 'Zany', 'Courageous'
+export const generarUsuarioAleatorio = (longitudMaxima: number = 10): string => {
+    const adjetivos = [
+        'Valiente', 'Listo', 'Brillante', 'Poderoso', 'Rápido', 'Curioso', 'Gentil', 'Feroz',
+        'Noble', 'Feliz', 'Atrevido', 'Veloz', 'Salvaje', 'Calmado', 'Leal', 'Juguetón', 'Intrépido',
+        'Tranquilo', 'Amistoso', 'Afortunado', 'Gracioso', 'Ingenioso', 'Audaz', 'Agudo', 'Sabio',
+        'Encantador', 'Enérgico', 'Orgulloso', 'Épico', 'Sereno', 'Alegre', 'Vívido', 'Animado',
+        'Vigilante', 'Paciente', 'Brillante', 'Místico', 'Radiante', 'Estable', 'Picante',
+        'Ambicioso', 'Deslumbrante', 'Vibrante', 'Atrevido', 'Intrepido', 'Aventurero', 'Astuto',
+        'Ingenioso', 'Dinámico', 'Heroico', 'Vivo', 'Reluciente', 'Innovador', 'Elegante', 
+        'Magnético', 'Estelar', 'Resiliente', 'Humilde', 'Gallardo', 'Creativo', 'Diligente', 
+        'Majestuoso', 'Valeroso', 'Optimista', 'Zafado', 'Espíritu', 'Rudo', 'Simpático', 'Ágil'
     ];
 
-    const nouns = [
-        "lion",
-        "Tiger",
-        "Bear",
-        "Eagle",
-        "shark",
-        "Wolf",
-        "hawk",
-        "Dragon",
-        "Panther",
-        "Falcon"
-    ]
+    const sustantivos = [
+        "León", "Tigre", "Oso", "Águila", "Tiburón", "Lobo", "Halcón", "Dragón", "Pantera", "Falcón"
+    ];
 
-    const randomItem =  (arrayy : any) => {
-        return arrayy[Math.floor(Math.random() * arrayy.length)]
-    }
-    // Código para generar un nombre de usuario utilizando adjetivos aleatorios
-    const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-    
-    let username = ""
-    username += randomItem(adjectives)
-    username += randomItem(nouns)
-    username += Math.floor(Math.random() * 10000)
+    const elementoAleatorio = (array: string[]): string => {
+        return array[Math.floor(Math.random() * array.length)];
+    };
 
-    if(username.length > length){
-        username = username.substring(0 , length)
+    let usuario = `${elementoAleatorio(adjetivos)}${elementoAleatorio(sustantivos)}${Math.floor(Math.random() * 10000)}`;
+
+    // Si el usuario generado excede longitudMaxima, lo recorta
+    if (usuario.length > longitudMaxima) {
+        usuario = usuario.substring(0, longitudMaxima);
     }
 
-    return username
+    return usuario;
 };

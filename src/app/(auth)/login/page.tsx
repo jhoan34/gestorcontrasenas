@@ -44,9 +44,10 @@ export default function Login() {
                 password: "",
             });
             router.push("/");
-        } catch (error: any) {
+        } catch (err) {
+            const dd =  err as Error
             toast({
-                title: error.response.data,
+                title: "Login Failed",
             })
         }
     };

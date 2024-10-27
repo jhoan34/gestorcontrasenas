@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
-
 // Define las rutas públicas y protegidas
 const publicRoutes = ["/login", "/register", "/api/register"];
 const protectedRoutes = ["/", "/profile", "/dashboard"]; // Puedes expandir según sea necesario

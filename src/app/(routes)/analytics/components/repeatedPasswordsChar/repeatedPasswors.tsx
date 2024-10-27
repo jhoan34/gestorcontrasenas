@@ -57,7 +57,7 @@ export function RepeatedPasswordsChart (props :RepeatedPasswordsChartProps) {
                     />
                     <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
                     <Label
-                        content={({ viewBox }: any) => {
+                        content={({ viewBox }) => {
                         if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                             return (
                             <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">

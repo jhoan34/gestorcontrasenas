@@ -7,7 +7,6 @@ import axios from "axios"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -65,6 +64,7 @@ export const FormEditElement = ( props : FormEditElementProps)  =>  {
             })
             router.push("/")
         } catch (error) {
+            console.log(error)
             toast({
                 title: "something went wrong",
                 variant: "destructive",

@@ -33,6 +33,7 @@ export async function POST(req: Request) {
 
         return new NextResponse(JSON.stringify(item), { status: 200 });
     } catch (error) {
+        console.log(error);
         return new NextResponse("Something went wrong", { status: 500 });
     }
 }

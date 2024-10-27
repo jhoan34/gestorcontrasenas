@@ -1,11 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 
-declare global {
-    var prisma: PrismaClient | undefined;
-}
+// Evitar múltiples instancias de PrismaClient
+const prismaGlobal = global as typeof global & { prisma?: PrismaClient };
 
-export const db = globalThis.prisma ?? new PrismaClient();
+// Si no existe una instancia, creamos una
+export const db = prismaGlobal.prisma ?? new PrismaClient();
 
 if (process.env.NODE_ENV !== "production") {
-    globalThis.prisma = db;
+    prismaGlobal.prisma = db;
 }
