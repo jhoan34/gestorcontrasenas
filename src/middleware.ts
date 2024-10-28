@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+
 // Define las rutas públicas y protegidas
 const publicRoutes = ["/login", "/register", "/api/register"];
 const protectedRoutes = ["/", "/profile", "/dashboard"]; // Puedes expandir según sea necesario
@@ -6,8 +7,11 @@ const protectedRoutes = ["/", "/profile", "/dashboard"]; // Puedes expandir seg�
 export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Obtiene el token de la sesión JWT (se maneja la autenticación aquí)
-  const session = req.cookies.get("authjs.session-token");
+  // Obtiene el token de la sesión JWT de las cookies disponibles
+  const session =
+    req.cookies.get("authjs.session-token") ||
+    req.cookies.get("__Secure-authjs.session-token") ||
+    req.cookies.get("__vercel_live_token");
 
   // Si no hay sesión y es una ruta protegida, redirigir a login
   if (!session && protectedRoutes.includes(pathname)) {
@@ -31,5 +35,5 @@ export default async function middleware(req: NextRequest) {
 
 // Configura el matcher para aplicar el middleware a las rutas específicas
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],  // Ajusta el matcher según sea necesario
+  matcher: ["/((?!.*\\..*|_next|api/register).*)", "/", "/(api|trpc)(.*)"], // Ajusta el matcher según sea necesario
 };
