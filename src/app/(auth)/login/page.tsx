@@ -33,8 +33,7 @@ export default function Login() {
 
     const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
         try {
-            const data = await registerUserFormAction(values);
-            console.log(data);
+            await registerUserFormAction(values);
             toast({
                 title: "Login Successful",
                 description: "You have successfully logged in.",
