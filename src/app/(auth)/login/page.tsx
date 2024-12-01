@@ -17,11 +17,13 @@ import { Input } from "@/components/ui/input";
 import registerUserFormAction from "@/actions/formaction";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 // Tipos inferidos desde el esquema de validación Zod
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export default function Login() {
+    const [loading, setLoading] = useState<boolean>(false);
     const router = useRouter();
     const form = useForm<LoginFormValues>({
         resolver: zodResolver(loginSchema),
@@ -33,7 +35,9 @@ export default function Login() {
 
     const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
         try {
+            setLoading(true);
             await registerUserFormAction(values);
+            setLoading(false);
             toast({
                 title: "Login Successful",
                 description: "You have successfully logged in.",
@@ -111,6 +115,7 @@ export default function Login() {
                         >
                             Submit
                         </Button>
+                        <p className={`text-center text-3xl  text-blue-500 mt-3 ${loading ? "animate-pulse" : ""} `}>{loading ? "Loading..." : ""}</p>
                     </form>
                 </Form>
                 <p className="text-center mt-6">¿No tenés una cuenta? <a className="hover:text-blue-800" href="/register">Registrate</a></p>

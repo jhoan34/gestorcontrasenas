@@ -60,6 +60,6 @@ export async function POST(req: Request) {
         return new NextResponse(JSON.stringify(newUser), { status: 201 }); // Return the created user with 201 status
     } catch (error) {
         console.error("Error creating user:", error); // Log the error for debugging
-        return new NextResponse("Something went wrong", { status: 500 });
+        return new NextResponse("Something went wrong creating user", { status: 500 });
     }
 }

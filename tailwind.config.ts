@@ -49,7 +49,12 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+			screen : {
+				'1' : '1024px',
+                '2' : '1280px',
+                '3' : '1536px'
+			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
